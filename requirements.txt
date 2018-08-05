@@ -3,5 +3,4 @@ gunicorn
 google-auth
 google-auth-oauthlib
 flask_sqlalchemy
-dateutil
 google-api-python-client
