@@ -1,0 +1,243 @@
+{
+  "kind": "calendar#events",
+  "defaultReminders": [],
+  "items": [
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T21:41:58.000Z",
+      "iCalUID": "hmhrnb2qjum8mc4etgp2dfga5o@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=aG1ocm5iMnFqdW04bWM0ZXRncDJkZmdhNW8gMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T21:41:58.742Z",
+      "summary": "Recurring Test Event",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:00:00-07:00"
+      },
+      "etag": "\"3066492237484000\"",
+      "location": "Test location",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "hmhrnb2qjum8mc4etgp2dfga5o"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:53:33.000Z",
+      "iCalUID": "r0i4ho0ijfupappe2bjakrtmbg@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=cjBpNGhvMGlqZnVwYXBwZTJiamFrcnRtYmcgMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:53:33.504Z",
+      "summary": "Recurring Test Event",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:00:00-07:00"
+      },
+      "etag": "\"3066508027008000\"",
+      "location": "Test location",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "r0i4ho0ijfupappe2bjakrtmbg"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-05T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:53:34.000Z",
+      "iCalUID": "cbdvu5f6a0gsfd6plboeb5paec@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=Y2JkdnU1ZjZhMGdzZmQ2cGxib2ViNXBhZWMgMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:53:34.468Z",
+      "summary": "Recurring Test Event",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:00:00-07:00"
+      },
+      "etag": "\"3066508028936000\"",
+      "location": "Test location",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "cbdvu5f6a0gsfd6plboeb5paec"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-02T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:53:35.000Z",
+      "iCalUID": "10djtu1ojagoa68ld92eldmi84@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=MTBkanR1MW9qYWdvYTY4bGQ5MmVsZG1pODQgMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:53:35.257Z",
+      "summary": "Single Running Event Test",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-02T14:00:00-07:00"
+      },
+      "etag": "\"3066508030514000\"",
+      "location": "Test Outdoors",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "10djtu1ojagoa68ld92eldmi84"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:54:08.000Z",
+      "iCalUID": "g6l0um5t68n9j6l7ntkog8b5co@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZzZsMHVtNXQ2OG45ajZsN250a29nOGI1Y28gMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:54:08.856Z",
+      "summary": "Recurring Test Event",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:00:00-07:00"
+      },
+      "etag": "\"3066508097712000\"",
+      "location": "Test location",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "g6l0um5t68n9j6l7ntkog8b5co"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-05T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:54:09.000Z",
+      "iCalUID": "3930hr54anr1s9v4c4bjv7lvao@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzkzMGhyNTRhbnIxczl2NGM0Ymp2N2x2YW8gMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:54:09.617Z",
+      "summary": "Recurring Test Event",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-03T14:00:00-07:00"
+      },
+      "etag": "\"3066508099234000\"",
+      "location": "Test location",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "3930hr54anr1s9v4c4bjv7lvao"
+    },
+    {
+      "status": "confirmed",
+      "kind": "calendar#event",
+      "end": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-02T14:30:00-07:00"
+      },
+      "description": "Testing some data",
+      "created": "2018-08-02T23:54:10.000Z",
+      "iCalUID": "rbojvgesjsq3u7im5sqblt4ub0@google.com",
+      "reminders": {
+        "useDefault": true
+      },
+      "htmlLink": "https://www.google.com/calendar/event?eid=cmJvanZnZXNqc3EzdTdpbTVzcWJsdDR1YjAgMmozM29xMDNjN21zYXJuNGpkaTFiNGx0YjBAZw",
+      "sequence": 0,
+      "updated": "2018-08-02T23:54:10.318Z",
+      "summary": "Single Running Event Test",
+      "start": {
+        "timeZone": "America/Los_Angeles",
+        "dateTime": "2018-08-02T14:00:00-07:00"
+      },
+      "etag": "\"3066508100636000\"",
+      "location": "Test Outdoors",
+      "organizer": {
+        "self": true,
+        "displayName": "carpinteria_ca",
+        "email": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com"
+      },
+      "creator": {
+        "email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com"
+      },
+      "id": "rbojvgesjsq3u7im5sqblt4ub0"
+    }
+  ],
+  "updated": "2018-08-02T23:54:11.399Z",
+  "summary": "carpinteria_ca",
+  "etag": "\"p33c8lllop37to0g\"",
+  "nextSyncToken": "CNiK1rjIz9wCENiK1rjIz9wCGAU=",
+  "timeZone": "America/Los_Angeles",
+  "accessRole": "owner"
+}

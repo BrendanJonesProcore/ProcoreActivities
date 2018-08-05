@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Trail Running",
+    "tags": [],
+    "event_id": 23,
+    "times": [
+      {
+        "end": "2018-08-01T17:30:00-04:00",
+        "time_string": "Repeats weekly on Wednesday's",
+        "google_calendar_id": "31abdfjtf3rb4uroiv59hdlgsg",
+        "start": "2018-08-01T17:00:00-04:00",
+        "schedule_id": 24,
+        "frequency": "RRULE:FREQ=WEEKLY"
+      }
+    ],
+    "user_interested": false,
+    "location": "Outdoors",
+    "reccurence": "RRULE:FREQ=WEEKLY",
+    "campus": "Carp",
+    "description": "Some description"
+  },
+  {
+    "name": "Trail Running",
+    "tags": [],
+    "event_id": 24,
+    "times": [
+      {
+        "end": "2018-08-01T17:30:00-04:00",
+        "time_string": "Wednesday, August 01 5:00PM - 5:30PM",
+        "google_calendar_id": "5sdclrhi247u329fo8mn8p515c",
+        "start": "2018-08-01T17:00:00-04:00",
+        "schedule_id": 25,
+        "frequency": ""
+      }
+    ],
+    "user_interested": false,
+    "location": "Outdoors",
+    "campus": "Carp",
+    "description": "Some description"
+  }
+]
