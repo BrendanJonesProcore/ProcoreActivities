@@ -119,7 +119,7 @@ class GridView extends Component {
             <div>
               <div class="singleCard" style={{ backgroundColor: cardcolor }} onClick={visibility.show}>
                 <h1> {item.name} </h1>
-                {item.times.map((name, i) => <h3 key={i}>{name.time_string}</h3>)}
+                {item.times.map((name, i) => i >= 2 ? null : <h3 key={i}>{name.time_string}</h3>)}
               </div>
 
               <Modal open={visibility.isVisible} onClickOverlay={visibility.hide} className="eventModal">
