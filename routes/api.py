@@ -261,7 +261,6 @@ def get_all_events():
         schedule_fields = ["id", "end", "start", "recurrence"]
         formatted_events = []
         for e in events_list:
-            print(e["id"])
             schedule = Schedule.query.filter_by(google_calendar_id=e["id"]).first()
             event = schedule.event
             formatted_event = event_in_formatted_events(formatted_events, event.id)
