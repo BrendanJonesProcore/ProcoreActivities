@@ -5,9 +5,6 @@ service_account_creds.json
 # dependencies
 **/node_modules
 
-# build
-static/dist/**
-
 # misc
 .env
 .DS_Store
