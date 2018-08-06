@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from '@procore/core-react';
-import { Grid, Col, Row, Modal as BModal, FormControl, Button as BButton } from 'react-bootstrap';
+import { Grid, Col, Row, Modal as BModal, FormControl } from 'react-bootstrap';
 import EditEventForm from './editEventForm';
 import JoinEventForm from './joinForm';
 import '../css/index.css';
@@ -25,7 +25,7 @@ class GridView extends Component {
       method: 'post',
       url: 'api/events/leave_event',
       data: { event_id: id }
-    }).then(visibility.hide)
+    }).then(visibility.hide).then(this.props.refresh)
   }
 
   createMatrix(events) {
@@ -105,35 +105,11 @@ class GridView extends Component {
       borderTop: "1px solid darkgray"
     }
     const interested = item.user_interested;
-    var areYouSure =
-      <Modal.State>
-        {({ visibility }) => (
-          <div>
-            <Button onClick={visibility.show}>Edit</Button>
-
-            <Modal open={visibility.isVisible} onClickOverlay={visibility.hide}>
-              <Modal.Header onClose={visibility.hide}>
-                Are you sure you want to edit this event for all users?
-              </Modal.Header>
-
-              <Modal.Footer>
-                <Modal.FooterNotation>
-                  <Button>No</Button>
-                </Modal.FooterNotation>
-
-                <Modal.FooterButtons>
-                  <EditEventForm refresh={this.props.refresh} event={item} />
-                </Modal.FooterButtons>
-              </Modal.Footer>
-            </Modal>
-          </div>
-        )}
-      </Modal.State>;
     var bButton;
     if (item.user_interested) {
-      bButton = areYouSure
+      bButton = <EditEventForm refresh={this.props.refresh} event={item} />
     } else {
-      bButton = <JoinEventForm event={item} />
+      bButton = <JoinEventForm refresh={this.props.refresh} event={item} />
     }
 
     return (
@@ -143,7 +119,7 @@ class GridView extends Component {
             <div>
               <div class="singleCard" style={{ backgroundColor: cardcolor }} onClick={visibility.show}>
                 <h1> {item.name} </h1>
-                {item.times.map((name, i) => i >= 2 ? null : <h3 key={i}>{name.time_string}</h3>)}
+                {item.times.map((name, i) => <h3 key={i}>{name.time_string}</h3>)}
               </div>
 
               <Modal open={visibility.isVisible} onClickOverlay={visibility.hide} className="eventModal">
@@ -167,7 +143,7 @@ class GridView extends Component {
                 <Modal.Footer>
                   <Modal.FooterNotation>
                     {interested &&
-                      <BButton bsStyle="danger" onClick={() => this.handleLeave(item.event_id, visibility)}>Leave Event</BButton>}
+                      <Button variant="secondary" onClick={() => this.handleLeave(item.event_id, visibility)}>Leave Event</Button>}
                   </Modal.FooterNotation>
 
                   <Modal.FooterButtons>

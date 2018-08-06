@@ -38,7 +38,7 @@ class JoinEventForm extends Component {
         method: 'post',
         url: 'api/events/add_interest',
         data: joindata
-      }).then(visibility.hide)
+      }).then(visibility.hide).then(this.props.refresh)
   }
 
 render() {

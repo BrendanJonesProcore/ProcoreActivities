@@ -180,12 +180,12 @@ def delete_event():
     cal = googleapiclient.discovery.build(
         'calendar', 'v3', credentials=credentials)
 
-    for schedule in event.schedules:
+    for schedule in event_to_delete.schedules:
         google_events_to_delete.append(schedule.google_calendar_id)
         db.session.delete(schedule)
 
     db.session.delete(event_to_delete)
-    campus = CAMPUS_CALENDAR[event.campus]
+    campus = CAMPUS_CALENDAR[event_to_delete.campus]
 
     for g_event in google_events_to_delete:
         cal.events().delete(calendarId=campus, eventId=g_event).execute()

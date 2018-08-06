@@ -8,6 +8,7 @@ class EditEventForm extends Component {
   constructor(props) {
     super(props);
     const event = this.props.event;
+    const confirmation = this.props.confirmation;
     this.state = {
       title: event.name,
       description: event.description,
@@ -22,7 +23,8 @@ class EditEventForm extends Component {
       deletedOccurrences: [],
       addedOccurrences: [],
       event_id: event.event_id,
-      googleCalChecked: true
+      googleCalChecked: true,
+      confirmation: confirmation
     }
     this.isRecurring = this.isRecurring.bind(this);
     this.getOccurrences = this.getOccurrences.bind(this);
@@ -39,7 +41,9 @@ class EditEventForm extends Component {
     this.cancelUpdate = this.cancelUpdate.bind(this);
     this.addOccurence = this.addOccurence.bind(this);
     this.deleteOccurrence = this.deleteOccurrence.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
     this.handleAddedOccurrences = this.handleAddedOccurrences.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   isRecurring(event) {
@@ -195,6 +199,13 @@ class EditEventForm extends Component {
       this.setState({});
     }
   }
+  deleteEvent(visibility) {
+    axios({
+      method: 'post',
+      url: 'api/events/delete',
+      data: this.state
+    }).then(visibility.hide).then(this.props.refresh)
+  }
   handleAddedOccurrences() {
     return axios({
       method: 'post',
@@ -202,18 +213,30 @@ class EditEventForm extends Component {
       data: this.state
     })
   }
-  handleSubmit(visibility) {
-    if (this.state.someUpdated) {
-      axios({
+  handleUpdate() {
+    return axios({
         method: 'post',
         url: 'api/events/update',
         data: this.state
-      }).then(visibility.hide).then(this.setState({someUpdated: false})).then(this.props.refresh);
-      if (this.state.addedOccurrences.length > 0) {
-        this.handleAddedOccurrences()
-      };
+    })
+  }
+  handleSubmit(visibility) {
+    if (this.state.someUpdated && (this.state.addedOccurrences.length > 0)) {
+      this.handleUpdate()
+      .then(this.handleAddedOccurrences())
+      .then(visibility.hide)
+      .then(this.setState({someUpdated: false, addedOccurrences: []}))
+      .then(this.props.refresh)
+    } else if (this.state.someUpdated) {
+      this.handleUpdate()
+      .then(visibility.hide)
+      .then(this.setState({someUpdated: false}))
+      .then(this.props.refresh)
     } else if (this.state.addedOccurrences.length > 0) {
-      this.handleAddedOccurrences().then(visibility.hide).then(this.setState({addedOccurrences: []}))
+      this.handleAddedOccurrences()
+      .then(visibility.hide)
+      .then(this.setState({addedOccurrences: []}))
+      .then(this.props.refresh)
     } else {
       visibility.hide
     }
@@ -349,7 +372,7 @@ class EditEventForm extends Component {
       <Modal.State>
         {({ visibility }) => (
           <div>
-            <Button variant="secondary" onClick={visibility.show}>Yes</Button>
+            <Button variant="secondary" onClick={visibility.show}>Edit</Button>
 
             <Modal open={visibility.isVisible} onClickOverlay={visibility.hide}>
               <Modal.Header className="modalHeader" onClose={visibility.hide}>Edit Activity</Modal.Header>
@@ -369,6 +392,10 @@ class EditEventForm extends Component {
                   <Button variant="tertiary" onClick={visibility.hide}>
                     Cancel
                   </Button>
+
+                  <BButton bsStyle="danger" style={{marginLeft: "80px"}} onClick={this.deleteEvent.bind(this, visibility)}>
+                    Permanently Delete
+                  </BButton>
                 </Modal.FooterNotation>
 
                 <Modal.FooterButtons>
