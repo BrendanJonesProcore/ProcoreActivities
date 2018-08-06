@@ -126,6 +126,7 @@ def create_occurrences():
         attendees.append(session["email"])
 
     new_occurrences = CreateOccurrence(req_data, attendees).execute()
+    print(req_data["addedOccurrences"])
     user = find_or_create_user(session["email"], session["name"])
     event = Event.query.get(req_data["event_id"])
     event.interested_users.append(user)
@@ -179,12 +180,12 @@ def delete_event():
     cal = googleapiclient.discovery.build(
         'calendar', 'v3', credentials=credentials)
 
-    for schedule in event.schedules:
+    for schedule in event_to_delete.schedules:
         google_events_to_delete.append(schedule.google_calendar_id)
         db.session.delete(schedule)
 
     db.session.delete(event_to_delete)
-    campus = CAMPUS_CALENDAR[event.campus]
+    campus = CAMPUS_CALENDAR[event_to_delete.campus]
 
     for g_event in google_events_to_delete:
         cal.events().delete(calendarId=campus, eventId=g_event).execute()

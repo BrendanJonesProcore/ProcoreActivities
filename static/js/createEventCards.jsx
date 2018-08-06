@@ -25,7 +25,7 @@ class GridView extends Component {
       method: 'post',
       url: 'api/events/leave_event',
       data: { event_id: id }
-    }).then(visibility.hide)
+    }).then(visibility.hide).then(this.props.refresh)
   }
 
   createMatrix(events) {
@@ -107,9 +107,9 @@ class GridView extends Component {
     const interested = item.user_interested;
     var bButton;
     if (item.user_interested) {
-      bButton = <EditEventForm event={item} />
+      bButton = <EditEventForm refresh={this.props.refresh} event={item} />
     } else {
-      bButton = <JoinEventForm event={item} />
+      bButton = <JoinEventForm refresh={this.props.refresh} event={item} />
     }
 
     return (
@@ -119,7 +119,7 @@ class GridView extends Component {
             <div>
               <div class="singleCard" style={{ backgroundColor: cardcolor }} onClick={visibility.show}>
                 <h1> {item.name} </h1>
-                {item.times.map((name, i) => i >= 2 ? null : <h3 key={i}>{name.time_string}</h3>)}
+                {item.times.map((name, i) => <h3 key={i}>{name.time_string}</h3>)}
               </div>
 
               <Modal open={visibility.isVisible} onClickOverlay={visibility.hide} className="eventModal">
