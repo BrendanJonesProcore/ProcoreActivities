@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, session, request, jsonify, url_for
 import google.oauth2.credentials
 from dateutil.parser import parse
-from datetime import datetime
+import datetime
 from google.oauth2 import service_account
 import googleapiclient.discovery
 import os
@@ -251,10 +251,12 @@ def get_all_events():
             }
         )
     else:
+        now = datetime.datetime.utcnow().isoformat() + 'Z'
+
         cal = googleapiclient.discovery.build(
             'calendar', 'v3', credentials=credentials)
         calendar_id = CAMPUS_CALENDAR[user.home_campus]
-        events = cal.events().list(calendarId=calendar_id).execute()
+        events = cal.events().list(calendarId=calendar_id,timeMin=now).execute()
         events_list = events["items"]
         interested_fields = ["id", "end", "start", "location", "summary", "description", "recurrence"]
         schedule_fields = ["id", "end", "start", "recurrence"]

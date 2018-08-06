@@ -32,7 +32,7 @@ class AvatarDropDown extends Component {
 
   render() {
     const overlay = (
-      <Menu onSelect={(item) => this.handleClick(item.key)}>
+      <Menu onSelect={(item) => this.handleClick(item.item.key)}>
         <Menu.Options>
           <Menu.Item key="campus">Switch Campus</Menu.Item>
           <Menu.Divider/>
