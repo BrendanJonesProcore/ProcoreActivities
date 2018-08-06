@@ -9,6 +9,7 @@ service_account_creds.json
 static/dist/**
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local

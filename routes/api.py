@@ -26,9 +26,21 @@ CAMPUS_CALENDAR = {
     "toronto_ca": "ebc69cvhvjhdkpojpe07o5nueo@group.calendar.google.com",
     "vancouver_ca": "tg9e014h4ojucfl6rp6p32b16g@group.calendar.google.com"
 }
-
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+svc_account_key = os.getenv('SERVICE_ACCOUNT_SECRET').replace(r'\n', '\n')
+service_account_info = {
+    "type": "service_account",
+    "project_id": "procoreactivities-211921",
+    "private_key_id": "96d881b40f6ad873425ebcb92c9e0284913b96c9",
+    "private_key": svc_account_key,
+    "client_email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com",
+    "client_id": "115297357679202654901",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mastercalendar%40procoreactivities-211921.iam.gserviceaccount.com"
+}
+credentials = service_account.Credentials.from_service_account_info(
+    service_account_info, scopes=SCOPES)
 from database import db, User, Schedule, Event, Tag
 @api.route('/avatar_url')
 def get_avatar_url():
