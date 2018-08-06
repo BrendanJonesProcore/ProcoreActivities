@@ -5,3 +5,4 @@ google-auth-oauthlib
 flask_sqlalchemy
 google-api-python-client
 python-dateutil
+psycopg2
