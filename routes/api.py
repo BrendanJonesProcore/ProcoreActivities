@@ -29,7 +29,7 @@ svc_account_key = os.getenv('SERVICE_ACCOUNT_SECRET').replace(r'\n', '\n')
 service_account_info = {
     "type": "service_account",
     "project_id": "procoreactivities-211921",
-    "private_key_id": "96d881b40f6ad873425ebcb92c9e0284913b96c9",
+    "private_key_id": "5d08f9bcc3cf20685dce5ad57ecb2beaee02a84e",
     "private_key": svc_account_key,
     "client_email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com",
     "client_id": "115297357679202654901",
