@@ -11,7 +11,6 @@ from services.create_occurrence import CreateOccurrence
 from services.update_event import UpdateEvent
 from helpers.auth import credentials_to_dict
 api = Blueprint('api', __name__) # must be above server import
-SERVICE_ACCOUNT_FILE = 'routes/service_account_creds.json'
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 CAMPUS_CALENDAR = {
     "carpinteria_ca": "2j33oq03c7msarn4jdi1b4ltb0@group.calendar.google.com",

@@ -9,8 +9,6 @@ from helpers.auth import credentials_to_dict
 
 auth = Blueprint('auth', __name__)
 SCOPES = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/userinfo.profile"]
-CLIENT_SECRETS_FILE = os.path.dirname(__file__) + '/../client_secret.json'
-
 client_config = {
     "web":{
         "client_id": os.getenv("OAUTH_CLIENT_ID"),
