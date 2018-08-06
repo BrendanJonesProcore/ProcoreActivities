@@ -7,11 +7,12 @@ import os
 
 app = Flask(__name__, static_folder="static/dist", template_folder="static") 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/2.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'  # We need this
 SCOPES = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/userinfo.profile", "http://procore-activities.herokuapp.com/auth/oauth2callback"]
 with app.app_context():
     db.init_app(app)
+    db.create_all()
     app.register_blueprint(api, url_prefix='/api')
     app.register_blueprint(auth, url_prefix='/auth')
 @app.route("/")
