@@ -126,6 +126,7 @@ def create_occurrences():
         attendees.append(session["email"])
 
     new_occurrences = CreateOccurrence(req_data, attendees).execute()
+    print(req_data["addedOccurrences"])
     user = find_or_create_user(session["email"], session["name"])
     event = Event.query.get(req_data["event_id"])
     event.interested_users.append(user)

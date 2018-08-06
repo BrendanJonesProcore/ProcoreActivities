@@ -18,7 +18,6 @@ class EditEventForm extends Component {
       originallyRecurring: this.isRecurring(event),
       occurrences: event.times.map(time => this.getOccurrences(time)),
       times: event.times,
-      noAdditionalOccurrence: true,
       someUpdated: false,
       deletedOccurrences: [],
       addedOccurrences: [],
@@ -93,8 +92,7 @@ class EditEventForm extends Component {
       var updatedOccurrences = this.state.addedOccurrences;
       updatedOccurrences[i].frequency = event.target.value;
       this.setState({
-        addedOccurrences: updatedOccurrences,
-        someUpdated: true
+        addedOccurrences: updatedOccurrences
       })
     } else {
       var updatedOccurrences = this.state.occurrences;
@@ -110,8 +108,7 @@ class EditEventForm extends Component {
       var updatedOccurrences = this.state.addedOccurrences;
       updatedOccurrences[i].date = event.target.value;
       this.setState({
-        addedOccurrences: updatedOccurrences,
-        someUpdated: true
+        addedOccurrences: updatedOccurrences
       })
     } else if (event.target.value) {
       var updatedOccurrences = this.state.occurrences;
@@ -127,8 +124,7 @@ class EditEventForm extends Component {
       var updatedOccurrences = this.state.addedOccurrences;
       updatedOccurrences[i].start_time = event.target.value;
       this.setState({
-        addedOccurrences: updatedOccurrences,
-        someUpdated: true
+        addedOccurrences: updatedOccurrences
       })
     } else if (event.target.value) {
       var updatedOccurrences = this.state.occurrences;
@@ -144,8 +140,7 @@ class EditEventForm extends Component {
       var updatedOccurrences = this.state.addedOccurrences;
       updatedOccurrences[i].end_time = event.target.value;
       this.setState({
-        addedOccurrences: updatedOccurrences,
-        someUpdated: true
+        addedOccurrences: updatedOccurrences
       })
     } else if (event.target.value) {
       var updatedOccurrences = this.state.occurrences;
@@ -162,14 +157,9 @@ class EditEventForm extends Component {
     })
   }
   isValidUpdate(event) {
-    if (this.state.title && this.state.description && this.state.location && this.state.someUpdated) {
-      if (this.state.recurring) {
-        return this.state.noAdditionalOccurrence
-      } else {
-        return true
-      }
-    }
-    return false
+    return (this.state.title && this.state.description &&
+      this.state.location && this.state.someUpdated) ||
+      (this.state.addedOccurrences.length > 0)
   }
   cancelUpdate(visibility) {
     then(visibility.hide).then(this.clearFields)
@@ -206,20 +196,27 @@ class EditEventForm extends Component {
     }
   }
   handleAddedOccurrences() {
-    if (this.state.addedOccurrences) {
-      axios({
-        method: 'post',
-        url: 'api/occurrences/new',
-        data: this.state
-      })
-    }
+    return axios({
+      method: 'post',
+      url: 'api/occurrences/new',
+      data: this.state
+    })
   }
   handleSubmit(visibility) {
-    axios({
-      method: 'post',
-      url: 'api/events/update',
-      data: this.state
-    }).then(this.handleAddedOccurrences).then(visibility.hide)
+    if (this.state.someUpdated) {
+      axios({
+        method: 'post',
+        url: 'api/events/update',
+        data: this.state
+      }).then(visibility.hide).then(this.setState({someUpdated: false})).then(this.props.refresh);
+      if (this.state.addedOccurrences.length > 0) {
+        this.handleAddedOccurrences()
+      };
+    } else if (this.state.addedOccurrences.length > 0) {
+      this.handleAddedOccurrences().then(visibility.hide).then(this.setState({addedOccurrences: []}))
+    } else {
+      visibility.hide
+    }
   }
   render() {
     const tags = ["Sports", "Outdoors", "Food", "Travel", "Carpool", "Happy Hour", "Dog-Friendly", "Arts & Crafts", "Beach", "Movies", "Music", "Volunteer", "Other"]
@@ -352,7 +349,7 @@ class EditEventForm extends Component {
       <Modal.State>
         {({ visibility }) => (
           <div>
-            <Button variant="secondary" onClick={visibility.show}>Edit</Button>
+            <Button variant="secondary" onClick={visibility.show}>Yes</Button>
 
             <Modal open={visibility.isVisible} onClickOverlay={visibility.hide}>
               <Modal.Header className="modalHeader" onClose={visibility.hide}>Edit Activity</Modal.Header>
