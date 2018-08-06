@@ -72,8 +72,8 @@ class CreateTimeCapsule extends Component {
       title: '',
       description: '',
       date: '',
-      start_time: '00:00',
-      end_time: '01:00',
+      start_time: '12:00',
+      end_time: '13:00',
       googleCalChecked: true,
     })
   }

@@ -132,7 +132,7 @@ tabClick(tab) {
         </BModal.Footer>
       </BModal>;
     } else {
-      mainPage = <GridView filters={this.state.filters} events={this.state.events} myView={this.state.myView}/>;
+      mainPage = <GridView refresh={this.refreshEvents} filters={this.state.filters} events={this.state.events} myView={this.state.myView}/>;
     }
     return (
       <div className="App">
