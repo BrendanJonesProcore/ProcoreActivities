@@ -67,6 +67,7 @@ class CreateOccurrence(object):
             date = new_occurrence['date']
             start_time = new_occurrence['start_time']
             end_time = new_occurrence['end_time']
-            occurrences.append(self.getOccurrenceInfo(frequency, date, start_time, end_time))
+            if (frequency and date and start_time and end_time):
+                occurrences.append(self.getOccurrenceInfo(frequency, date, start_time, end_time))
 
         return occurrences

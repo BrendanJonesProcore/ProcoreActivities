@@ -299,12 +299,11 @@ class EditEventForm extends Component {
     }
     function showOccurence(self, occurrence, i, isAdded) {
       var instanceNum = '';
-      if (occurrence.frequency) {
-        if (isAdded) {
-          instanceNum = i + 1 + self.state.occurrences.length + '. ';
-        } else {
-          instanceNum = i + 1 + '. ';
-        }
+      if (isAdded && ((self.state.occurrences.length + self.state.addedOccurrences.length) > 1)) {
+        console.log(i + 1 + self.state.occurrences.length)
+        instanceNum = i + 1 + self.state.occurrences.length + '. ';
+      } else if ((self.state.occurrences.length + self.state.addedOccurrences.length) > 1) {
+        instanceNum = i + 1 + '. ';
       }
       return (
         <div>
