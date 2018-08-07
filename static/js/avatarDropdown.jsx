@@ -33,9 +33,9 @@ class AvatarDropDown extends Component {
     const overlay = (
       <Menu onSelect={(item) => this.handleClick(item.item.key)}>
         <Menu.Options>
-          <Menu.Item key="logout">Sign Out</Menu.Item>
-          <Menu.Divider/>
           <Menu.Item key="campus">Switch Campus</Menu.Item>
+          <Menu.Divider/>
+          <Menu.Item key="logout">Sign Out</Menu.Item>
         </Menu.Options>
       </Menu>
     )

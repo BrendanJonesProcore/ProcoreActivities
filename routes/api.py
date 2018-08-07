@@ -29,7 +29,7 @@ svc_account_key = os.getenv('SERVICE_ACCOUNT_SECRET').replace(r'\n', '\n')
 service_account_info = {
     "type": "service_account",
     "project_id": "procoreactivities-211921",
-    "private_key_id": "96d881b40f6ad873425ebcb92c9e0284913b96c9",
+    "private_key_id": "5d08f9bcc3cf20685dce5ad57ecb2beaee02a84e",
     "private_key": svc_account_key,
     "client_email": "mastercalendar@procoreactivities-211921.iam.gserviceaccount.com",
     "client_id": "115297357679202654901",
@@ -126,6 +126,7 @@ def create_occurrences():
         attendees.append(session["email"])
 
     new_occurrences = CreateOccurrence(req_data, attendees).execute()
+    print(req_data["addedOccurrences"])
     user = find_or_create_user(session["email"], session["name"])
     event = Event.query.get(req_data["event_id"])
     event.interested_users.append(user)
@@ -179,12 +180,12 @@ def delete_event():
     cal = googleapiclient.discovery.build(
         'calendar', 'v3', credentials=credentials)
 
-    for schedule in event.schedules:
+    for schedule in event_to_delete.schedules:
         google_events_to_delete.append(schedule.google_calendar_id)
         db.session.delete(schedule)
 
     db.session.delete(event_to_delete)
-    campus = CAMPUS_CALENDAR[event.campus]
+    campus = CAMPUS_CALENDAR[event_to_delete.campus]
 
     for g_event in google_events_to_delete:
         cal.events().delete(calendarId=campus, eventId=g_event).execute()
@@ -261,7 +262,6 @@ def get_all_events():
         schedule_fields = ["id", "end", "start", "recurrence"]
         formatted_events = []
         for e in events_list:
-            print(e["id"])
             schedule = Schedule.query.filter_by(google_calendar_id=e["id"]).first()
             event = schedule.event
             formatted_event = event_in_formatted_events(formatted_events, event.id)
